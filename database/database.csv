@@ -1,2 +1,2 @@
 TIME,ID,latitude,longitude,altitude,#WiFi networks,SSID1,MAC1,Frequency1,Signal1,SSID2,MAC2,Frequency2,Signal2,SSID3,MAC3,Frequency3,Signal3,SSID4,MAC4,Frequency4,Signal4,SSID5,MAC5,Frequency5,Signal5,SSID6,MAC6,Frequency6,Signal6,SSID7,MAC7,Frequency7,Signal7,SSID8,MAC8,Frequency8,Signal8,SSID9,MAC9,Frequency9,Signal9,SSID10,MAC10,Frequency10,Signal10
-2017-10-31 12:23:25,model=SM-G950F_device=dreamlte,32.1034255,35.20978696,702.0,1,IT-MNG,1c:b9:c4:15:ed:bc,48,-59
+2017-11-02 09:19:07,MPIS,32.10332585,35.209372,720.0,1,,fc:c2:de:ae:1f:3a,1,-72

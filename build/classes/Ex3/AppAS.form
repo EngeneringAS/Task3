@@ -817,30 +817,27 @@
                                   <Component id="jRadioButtonOr" alignment="2" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelOR" alignment="2" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
-                              <Component id="jLabelUSE" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jButtonFilter" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jButtonCancel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextFieldDeviceName" min="-2" pref="220" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabelFROMTime" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                      <Component id="jFormattedTextFieldFROM" min="-2" pref="130" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jLabelTOTime" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jFormattedTextFieldTO" min="-2" pref="130" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabelX" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabelRadius" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                              <Component id="jLabelX" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jLabelRadius" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jFormattedTextField1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jFormattedTextFieldRadius" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="1" attributes="0">
                                                   <Component id="jButtonUPdate" min="-2" max="-2" attributes="0"/>
@@ -855,40 +852,39 @@
                                           </Group>
                                       </Group>
                                   </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                      <Component id="jLabelFROMTime" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jFormattedTextFieldFROM" min="-2" pref="130" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jLabelTOTime" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jFormattedTextFieldTO" min="-2" pref="130" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jLabelLocation" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelTime" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelDevice" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldDeviceName" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="8" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jRadioButtonLocation" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonTime" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonDecvice" linkSize="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabelNOT" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="2" attributes="0">
+                                      <Component id="jRadioButtonNOTdevice" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jRadioButtonNOTlocation" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jRadioButtonNOTtime" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="133" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="jRadioButtonDecvice" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButtonNotUse" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButtonLocation" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButtonTime" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="jRadioButtonNOTdevice" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButtonNOTlocation" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButtonNOTtime" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelNOT" alignment="2" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="173" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelDevice" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelLocation" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelTime" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonFilter" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButtonCancel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -896,87 +892,71 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelTime" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelNOT" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabelTime" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabelAND" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelOR" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jFormattedTextFieldFROM" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jFormattedTextFieldTO" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelFROMTime" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelTOTime" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                              <Component id="jLabelLocation" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabelX" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jFormattedTextFieldLantitude" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelY" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jFormattedTextFieldLongtitude" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabelRadius" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jFormattedTextFieldRadius" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jLabelDevice" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jTextFieldDeviceName" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jLabelNOT" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jRadioButtonOr" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioButtonAnd" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jFormattedTextFieldFROM" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jFormattedTextFieldTO" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabelFROMTime" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabelTOTime" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="jRadioButtonNOTtime" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jLabelLocation" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jRadioButtonNOTtime" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jRadioButtonTime" linkSize="2" min="-2" pref="21" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabelX" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jFormattedTextFieldLantitude" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabelY" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jFormattedTextFieldLongtitude" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabelRadius" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jFormattedTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jLabelDevice" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldDeviceName" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jRadioButtonLocation" min="-2" pref="21" max="-2" attributes="0"/>
-                                          <Component id="jRadioButtonNOTlocation" linkSize="2" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="69" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jRadioButtonDecvice" linkSize="2" alignment="1" min="-2" pref="21" max="-2" attributes="0"/>
-                                          <Component id="jRadioButtonNOTdevice" linkSize="2" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jRadioButtonNotUse" linkSize="2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelUSE" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonLocation" min="-2" pref="21" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonNOTlocation" linkSize="2" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                              <EmptySpace pref="66" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jRadioButtonNOTdevice" linkSize="2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonDecvice" linkSize="2" alignment="1" min="-2" pref="21" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <EmptySpace pref="7" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelAND" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelOR" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jRadioButtonOr" min="-2" max="-2" attributes="0"/>
+                          <Component id="jRadioButtonAnd" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButtonFilter" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButtonUPdate" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButtonCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="162" max="32767" attributes="0"/>
+                      <EmptySpace pref="173" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -998,7 +978,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Date date = new Date();&#xa;SimpleDateFormat formatter = new SimpleDateFormat(&quot;yyyy-MM-dd hh:mm:ss&quot;);&#xa;String dateString = formatter.format(date);"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Date date = new Date();&#xa;SimpleDateFormat formatter = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);&#xa;String dateString = formatter.format(date);"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldTO">
@@ -1044,14 +1024,6 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButtonNotUse">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroupTypeFilter"/>
-                </Property>
-                <Property name="selected" type="boolean" value="true"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabelAND">
               <Properties>
                 <Property name="text" type="java.lang.String" value="AND"/>
@@ -1065,11 +1037,6 @@
             <Component class="javax.swing.JLabel" name="jLabelNOT">
               <Properties>
                 <Property name="text" type="java.lang.String" value="NOT"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelUSE">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Not Use"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelLocation">
@@ -1137,7 +1104,7 @@
                 <Property name="text" type="java.lang.String" value="Radius"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
+            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldRadius">
               <Properties>
                 <Property name="columns" type="int" value="8"/>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
@@ -1164,6 +1131,7 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroupTypeFilter"/>
                 </Property>
+                <Property name="selected" type="boolean" value="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonFilter">

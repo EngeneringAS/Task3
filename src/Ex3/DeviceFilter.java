@@ -15,7 +15,7 @@ public class DeviceFilter implements Filter{
     private String NameDevice;
     /**
      * the constructor for DeviceFilter
-     * @param name 
+     * @param name ID of device
      */
     public DeviceFilter(String name)
     {

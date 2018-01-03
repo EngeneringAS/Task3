@@ -19,8 +19,15 @@ import de.micromata.opengis.kml.v_2_2_0.LineStyle;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
 import de.micromata.opengis.kml.v_2_2_0.Style;
 import java.awt.HeadlessException;
+import java.io.BufferedOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStream;
+import static java.lang.ProcessBuilder.Redirect.Type.APPEND;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import static java.nio.file.StandardOpenOption.CREATE;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFileChooser;
@@ -185,6 +192,21 @@ public class WriteFunctions {
             JOptionPane.showMessageDialog(null, "csv record saved");
         }catch(IOException | HeadlessException e) {
             JOptionPane.showMessageDialog(null, "csv record not saved");
+        }
+    }
+    //
+    public void WriteFilter(Filter filter)
+    {
+        // Convert the string to a byte array
+        String s = filter.toString();
+        byte data[] = s.getBytes();
+        Path p = Paths.get(pathFilter);
+        try (OutputStream out = new BufferedOutputStream(
+             Files.newOutputStream(p))) 
+        {
+             out.write(data, 0, data.length);
+        }catch(IOException x){
+            JOptionPane.showMessageDialog(null, "filter.txt record not saved");
         }
     }
 }

@@ -19,11 +19,11 @@ public class Time {
 	/*
 	 * getters and setters for Time
 	 */
-	public String getFt() {								//returns the time as string
+	public String getFt() {                                 //returns the time as string
 		String str=this.ft.format(this.parsingDate);
 		return str;
 	}
-	public boolean setFt(String str) {					//returns true-if str is time, false-if str is not time
+	public boolean setFt(String str) {                      //returns true-if str is time, false-if str is not time
 	      try {
 	         this.parsingDate = this.ft.parse(str);
 	         return true;
@@ -32,7 +32,7 @@ public class Time {
 	         return false;
 	      }
 	}
-	public Date getFtD()								//returns the time as date
+	public Date getFtD()                		//returns the time as date
 	{
 		return this.parsingDate;
 	}

@@ -13,8 +13,8 @@ import Ex1.Time;
  * @version 1
  */
 public class TimeFilter implements Filter{
-    private Time _from;
-    private Time _to;
+    private Time _from=new Time();;
+    private Time _to=new Time();;
     /**
      * constructor for TimeFilter
      * @param start from
@@ -24,14 +24,6 @@ public class TimeFilter implements Filter{
     {
         this._from.setFt(start);
         this._to.setFt(end);
-    }
-    /**
-     * constructor for TimeFilter
-     */
-    public TimeFilter()
-    {
-        this._from=new Time();
-        this._to=new Time();
     }
     /**
      * the function check time

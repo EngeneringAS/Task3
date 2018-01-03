@@ -17,6 +17,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -231,6 +232,7 @@ public class HelpFunctionEx3
     */
     public Location ThreeMac(ArrayList<DataWIFI> DWF,DataWIFI three)
     {
+        try{
         //variables
         Location place=new Location();
         HelpFunctions hlp=new HelpFunctions();
@@ -239,6 +241,9 @@ public class HelpFunctionEx3
         if (place!=null)
             return place;
         return new Location();
+        }catch(NullPointerException e){
+            return new Location();
+        }
     }
     /**
     * the function returns a place for row as comb_no_gps_ts1.csv according to the second algorithm 
@@ -298,5 +303,20 @@ public class HelpFunctionEx3
     public String ShowFilter()
     {
         return rf.ReadShowFilter();
+    }
+    //
+    public void WriteFilter(Filter _filter)
+    {
+        ArrayList<DataWIFI> dwf=rf.ReadDataBase();
+        Iterator<DataWIFI> it = dwf.iterator();
+        while (it.hasNext())
+        {
+            DataWIFI tmp = it.next();
+            if (!_filter.Compare(tmp))
+                it.remove();
+        }
+        Clear();
+        wf.WriteCSV(dwf);
+        wf.WriteFilter(_filter);
     }
 }
