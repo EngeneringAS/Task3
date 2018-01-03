@@ -1,0 +1,1 @@
+(Time(t0<data<t1) & (!(Position(radius<0.01, center =(32.103, 35.207)))))

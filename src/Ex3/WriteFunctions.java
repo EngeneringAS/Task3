@@ -34,6 +34,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class WriteFunctions {
     //variable
     private final String pathDataBase="database//database.csv";     //path to database
+    private final String pathFilter="database//filter.txt";         //path to filter
     /**
      * the function generates and set a placemark object, with the given statistical data
      * @param document structure of the KML file

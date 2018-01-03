@@ -130,6 +130,7 @@ public class AppAS extends JFrame {
         jButtonSaveFile = new javax.swing.JButton();
         jButtonSaveKML = new javax.swing.JButton();
         jButtonShowData = new javax.swing.JButton();
+        jTextFieldFilter = new javax.swing.JTextField();
         jPanelFilters = new javax.swing.JPanel();
         jLabelTime = new javax.swing.JLabel();
         jFormattedTextFieldFROM = new javax.swing.JFormattedTextField();
@@ -158,12 +159,9 @@ public class AppAS extends JFrame {
         jLabelDevice = new javax.swing.JLabel();
         jTextFieldDeviceName = new javax.swing.JTextField();
         jRadioButtonDecvice = new javax.swing.JRadioButton();
-        jLabelYourFilter = new javax.swing.JLabel();
-        jTextFieldYourFilter = new javax.swing.JTextField();
         jButtonFilter = new javax.swing.JButton();
         jButtonCancel = new javax.swing.JButton();
         jButtonUPdate = new javax.swing.JButton();
-        jButtonYourFilter = new javax.swing.JButton();
         jRadioButtonNOTlocation = new javax.swing.JRadioButton();
         jRadioButtonNOTdevice = new javax.swing.JRadioButton();
         mainMenu = new javax.swing.JMenuBar();
@@ -524,49 +522,52 @@ public class AppAS extends JFrame {
             }
         });
 
+        jTextFieldFilter.setEditable(false);
+        jTextFieldFilter.setColumns(50);
+        jTextFieldFilter.setText("Filter:");
+
         javax.swing.GroupLayout jPanelIOputLayout = new javax.swing.GroupLayout(jPanelIOput);
         jPanelIOput.setLayout(jPanelIOputLayout);
         jPanelIOputLayout.setHorizontalGroup(
             jPanelIOputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelIOputLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addContainerGap()
                 .addGroup(jPanelIOputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelAddFile, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelSK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelAddFolder, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelShowData, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelCB, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelSD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
-                .addGroup(jPanelIOputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelIOputLayout.createSequentialGroup()
+                        .addGroup(jPanelIOputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelAddFile, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelAddFolder, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelShowData, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelCB, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(7, 7, 7)
+                        .addGroup(jPanelIOputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextFieldSaveKml, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldNameSaveFile, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldNameFile, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldNameFolder, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldShowData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 22, Short.MAX_VALUE)
+                        .addGroup(jPanelIOputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jButtonSaveKML, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonSaveFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonBrowseFile, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                            .addComponent(jButtonBrowseFolder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE))
                     .addGroup(jPanelIOputLayout.createSequentialGroup()
                         .addGroup(jPanelIOputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextFieldNameFile, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                            .addComponent(jTextFieldNameFolder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldNameSaveFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldSaveKml, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldShowData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelIOputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelIOputLayout.createSequentialGroup()
-                                .addGroup(jPanelIOputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButtonBrowseFolder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButtonBrowseFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                                .addGroup(jPanelIOputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButtonOKFolder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButtonOKFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(36, 36, 36))
-                            .addGroup(jPanelIOputLayout.createSequentialGroup()
-                                .addGroup(jPanelIOputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelIOputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jButtonSaveFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButtonSaveKML, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(jButtonShowData))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(jPanelIOputLayout.createSequentialGroup()
-                        .addComponent(jButtonClearOK)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(jButtonShowData)
+                            .addComponent(jTextFieldFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanelIOputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jButtonOKFolder, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                    .addComponent(jButtonOKFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(36, 36, 36))
+            .addGroup(jPanelIOputLayout.createSequentialGroup()
+                .addGap(197, 197, 197)
+                .addComponent(jButtonClearOK)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanelIOputLayout.setVerticalGroup(
             jPanelIOputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -603,14 +604,17 @@ public class AppAS extends JFrame {
                             .addComponent(jButtonSaveKML))
                         .addGap(28, 28, 28)
                         .addComponent(jLabelShowData))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelIOputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextFieldShowData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonShowData))))
+                    .addComponent(jTextFieldShowData, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jTextFieldFilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jButtonShowData)
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         jButtonBrowseFolder.getAccessibleContext().setAccessibleName("jButtonBrowseFolder");
 
-        jTabbedPanelTask.addTab("Input", null, jPanelIOput, "");
+        jTabbedPanelTask.addTab("IOput", null, jPanelIOput, "");
         jPanelIOput.getAccessibleContext().setAccessibleName("IOput");
 
         jPanelFilters.setBackground(new java.awt.Color(255, 255, 204));
@@ -711,13 +715,6 @@ public class AppAS extends JFrame {
 
         buttonGroupTypeFilter.add(jRadioButtonDecvice);
 
-        jLabelYourFilter.setText("Your filter");
-
-        jTextFieldYourFilter.setColumns(370);
-        jTextFieldYourFilter.setText("(Time(t0<data<t1) & (!(Position(radius<0.01, center =(32.103, 35.207))))) // (Device==name)");
-        jTextFieldYourFilter.setMinimumSize(new java.awt.Dimension(370, 30));
-        jTextFieldYourFilter.setPreferredSize(new java.awt.Dimension(370, 30));
-
         jButtonFilter.setText("Filter");
         jButtonFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -739,13 +736,6 @@ public class AppAS extends JFrame {
             }
         });
 
-        jButtonYourFilter.setText("YourFilter");
-        jButtonYourFilter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonYourFilterActionPerformed(evt);
-            }
-        });
-
         buttonGroupTypeFilter.add(jRadioButtonNOTlocation);
 
         buttonGroupTypeFilter.add(jRadioButtonNOTdevice);
@@ -758,8 +748,7 @@ public class AppAS extends JFrame {
                 .addContainerGap()
                 .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                        .addComponent(jButtonFilter)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabelAND)
                             .addComponent(jRadioButtonAnd))
@@ -789,12 +778,15 @@ public class AppAS extends JFrame {
                                 .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                                        .addComponent(jFormattedTextFieldLantitude, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabelY)
+                                        .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jButtonUPdate)
+                                            .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                                                .addComponent(jFormattedTextFieldLantitude, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabelY)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jFormattedTextFieldLongtitude, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)))
                 .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jRadioButtonDecvice)
                     .addComponent(jRadioButtonNotUse)
@@ -806,33 +798,20 @@ public class AppAS extends JFrame {
                     .addComponent(jRadioButtonNOTlocation)
                     .addComponent(jRadioButtonNOTtime)
                     .addComponent(jLabelNOT))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(173, Short.MAX_VALUE))
             .addGroup(jPanelFiltersLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jButtonYourFilter)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonUPdate)
-                .addGap(41, 41, 41)
-                .addComponent(jButtonCancel)
-                .addGap(76, 76, 76))
-            .addGroup(jPanelFiltersLayout.createSequentialGroup()
                 .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jTextFieldYourFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabelYourFilter))
-                    .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabelDevice))
-                    .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabelLocation))
-                    .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabelTime)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                    .addComponent(jLabelDevice)
+                    .addComponent(jLabelLocation)
+                    .addComponent(jLabelTime))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonFilter)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonCancel)
+                .addGap(99, 99, 99))
         );
 
         jPanelFiltersLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jRadioButtonDecvice, jRadioButtonLocation, jRadioButtonNOTdevice, jRadioButtonNOTlocation, jRadioButtonNOTtime, jRadioButtonNotUse, jRadioButtonTime});
@@ -888,29 +867,21 @@ public class AppAS extends JFrame {
                                 .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jRadioButtonLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jRadioButtonNOTlocation))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                                 .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jRadioButtonDecvice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jRadioButtonNOTdevice, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jButtonFilter))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltersLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jRadioButtonNotUse)
-                                    .addComponent(jLabelUSE))
-                                .addGap(7, 7, 7)))))
-                .addComponent(jLabelYourFilter)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextFieldYourFilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jRadioButtonNotUse)
+                            .addComponent(jLabelUSE))
+                        .addGap(7, 7, 7)))
+                .addGap(27, 27, 27)
                 .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonYourFilter)
+                    .addComponent(jButtonFilter)
                     .addComponent(jButtonUPdate)
                     .addComponent(jButtonCancel))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
 
         jPanelFiltersLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jRadioButtonDecvice, jRadioButtonNOTdevice, jRadioButtonNOTlocation, jRadioButtonNOTtime, jRadioButtonNotUse, jRadioButtonTime});
@@ -985,6 +956,7 @@ public class AppAS extends JFrame {
     //the functon show data about number of WiFi and rows in database
     private void jButtonShowDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShowDataActionPerformed
         jTextFieldShowData.setText(hf.ShowData());
+        jTextFieldFilter.setText(hf.ShowFilter());
     }//GEN-LAST:event_jButtonShowDataActionPerformed
     //the function cleaning database
     private void jButtonClearOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearOKActionPerformed
@@ -1087,26 +1059,8 @@ public class AppAS extends JFrame {
     private void jPanelFiltersAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanelFiltersAncestorAdded
         flag=0;
     }//GEN-LAST:event_jPanelFiltersAncestorAdded
-    //user select her filter
-    private void jButtonYourFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonYourFilterActionPerformed
-        if (flag==0)
-        {
-            
-            System.out.println("1");
-            flag++;
-        }
-        else
-            if (flag==1)
-            {
-                System.out.println("2");
-                flag++;
-            }
-            else
-            {
-                System.out.println("only 2");
-            }
-    }//GEN-LAST:event_jButtonYourFilterActionPerformed
-    //the function update database
+
+   //the function update database
     private void jButtonUPdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUPdateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonUPdateActionPerformed
@@ -1131,7 +1085,6 @@ public class AppAS extends JFrame {
     private javax.swing.JButton jButtonSaveKML;
     private javax.swing.JButton jButtonShowData;
     private javax.swing.JButton jButtonUPdate;
-    private javax.swing.JButton jButtonYourFilter;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextFieldFROM;
     private javax.swing.JFormattedTextField jFormattedTextFieldLantitude;
@@ -1175,7 +1128,6 @@ public class AppAS extends JFrame {
     private javax.swing.JLabel jLabelUSE;
     private javax.swing.JLabel jLabelX;
     private javax.swing.JLabel jLabelY;
-    private javax.swing.JLabel jLabelYourFilter;
     private javax.swing.JPanel jPanelALGO;
     private javax.swing.JPanel jPanelFilters;
     private javax.swing.JPanel jPanelIOput;
@@ -1191,6 +1143,7 @@ public class AppAS extends JFrame {
     private javax.swing.JTabbedPane jTabbedPanelTask;
     private javax.swing.JTextField jTextFieldAltitude;
     private javax.swing.JTextField jTextFieldDeviceName;
+    private javax.swing.JTextField jTextFieldFilter;
     private javax.swing.JTextField jTextFieldLantitude;
     private javax.swing.JTextField jTextFieldLongtitude;
     private javax.swing.JTextField jTextFieldNameFile;
@@ -1199,7 +1152,6 @@ public class AppAS extends JFrame {
     private javax.swing.JTextField jTextFieldRowTS;
     private javax.swing.JTextField jTextFieldSaveKml;
     private javax.swing.JTextField jTextFieldShowData;
-    private javax.swing.JTextField jTextFieldYourFilter;
     private javax.swing.JMenuBar mainMenu;
     // End of variables declaration//GEN-END:variables
     //the function set icon to JFrame

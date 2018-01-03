@@ -294,4 +294,9 @@ public class HelpFunctionEx3
             return place;
         return new Location();
     }
+    //the function return filter 
+    public String ShowFilter()
+    {
+        return rf.ReadShowFilter();
+    }
 }

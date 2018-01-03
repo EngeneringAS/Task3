@@ -17,6 +17,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
+import java.nio.file.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  * The read functions for help function of Assignment 3
  * @author Alexey Titov   and   Shalom Weinberger
@@ -25,6 +28,7 @@ import javax.swing.JOptionPane;
 public class ReadFunctions {
     //variables
     private final String pathDataBase="database//database.csv";     //path to database
+    private final String pathFilter="database//filter.txt";         //path to filter
     private static Map<String,Integer> MaxSignal=new HashMap<>();   //map max signal of wifi
     /**
      * the function setting max value of wifi signal to map
@@ -478,5 +482,16 @@ public class ReadFunctions {
             return coa;
         }
         return coa;
+    }
+    //the functio read filter from text file
+    public String ReadShowFilter()
+    {
+        try{
+            String filter = "";
+            filter = new String(Files.readAllBytes(Paths.get(pathFilter)));
+            return filter;
+        }catch(IOException ex){
+            return "No found filter file";
+        }
     }
 }
