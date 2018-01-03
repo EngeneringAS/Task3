@@ -28,6 +28,8 @@ public class AppAS extends JFrame {
     private final int limit=5;
     private final HelpFunctionEx3 hf=new HelpFunctionEx3();
     private final ReadFunctions rf=new ReadFunctions();
+    private int flag=0;
+    
     public static void main(String[] args)
     {
         /* Set the Nimbus look and feel */
@@ -77,9 +79,8 @@ public class AppAS extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroupTime = new javax.swing.ButtonGroup();
-        buttonGroupLocation = new javax.swing.ButtonGroup();
-        buttonGroupDevice = new javax.swing.ButtonGroup();
+        buttonGroupLogical = new javax.swing.ButtonGroup();
+        buttonGroupTypeFilter = new javax.swing.ButtonGroup();
         jTabbedPanelTask = new javax.swing.JTabbedPane();
         jPanelALGO = new javax.swing.JPanel();
         jLabelSalgorithm = new javax.swing.JLabel();
@@ -135,10 +136,10 @@ public class AppAS extends JFrame {
         jFormattedTextFieldTO = new javax.swing.JFormattedTextField();
         jLabelFROMTime = new javax.swing.JLabel();
         jLabelTOTime = new javax.swing.JLabel();
-        jRadioButtonTimeAnd = new javax.swing.JRadioButton();
-        jRadioButtonTimeOr = new javax.swing.JRadioButton();
-        jRadioButtonTimeNot = new javax.swing.JRadioButton();
-        jRadioButtonTimeNotUse = new javax.swing.JRadioButton();
+        jRadioButtonAnd = new javax.swing.JRadioButton();
+        jRadioButtonOr = new javax.swing.JRadioButton();
+        jRadioButtonNOTtime = new javax.swing.JRadioButton();
+        jRadioButtonNotUse = new javax.swing.JRadioButton();
         jLabelAND = new javax.swing.JLabel();
         jLabelOR = new javax.swing.JLabel();
         jLabelNOT = new javax.swing.JLabel();
@@ -150,24 +151,21 @@ public class AppAS extends JFrame {
         jFormattedTextFieldLantitude = new javax.swing.JFormattedTextField(new NumberFormatter(number));
         jLabelY = new javax.swing.JLabel();
         jFormattedTextFieldLongtitude = new javax.swing.JFormattedTextField(new NumberFormatter(number));
-        jRadioButtonLocationAND = new javax.swing.JRadioButton();
-        jRadioButtonLocationOR = new javax.swing.JRadioButton();
-        jRadioButtonLocationNOT = new javax.swing.JRadioButton();
-        jRadioButtonLocationNOTUSE = new javax.swing.JRadioButton();
+        jRadioButtonTime = new javax.swing.JRadioButton();
+        jRadioButtonLocation = new javax.swing.JRadioButton();
         jLabelRadius = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabelDevice = new javax.swing.JLabel();
         jTextFieldDeviceName = new javax.swing.JTextField();
-        jRadioButtonDecviceAND = new javax.swing.JRadioButton();
-        jRadioButtonDecviceOR = new javax.swing.JRadioButton();
-        jRadioButtonDecviceNOT = new javax.swing.JRadioButton();
-        jRadioButtonDecviceNotUse = new javax.swing.JRadioButton();
+        jRadioButtonDecvice = new javax.swing.JRadioButton();
         jLabelYourFilter = new javax.swing.JLabel();
         jTextFieldYourFilter = new javax.swing.JTextField();
         jButtonFilter = new javax.swing.JButton();
         jButtonCancel = new javax.swing.JButton();
         jButtonUPdate = new javax.swing.JButton();
         jButtonYourFilter = new javax.swing.JButton();
+        jRadioButtonNOTlocation = new javax.swing.JRadioButton();
+        jRadioButtonNOTdevice = new javax.swing.JRadioButton();
         mainMenu = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -425,7 +423,6 @@ public class AppAS extends JFrame {
         jPanelIOput.setBackground(new java.awt.Color(204, 255, 255));
         jPanelIOput.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jPanelIOput.setMinimumSize(new java.awt.Dimension(660, 450));
-        jPanelIOput.setNextFocusableComponent(jPanelFilters);
         jPanelIOput.setPreferredSize(new java.awt.Dimension(660, 450));
 
         jLabelAddFolder.setText("Add Folder of Wigle files");
@@ -620,6 +617,15 @@ public class AppAS extends JFrame {
         jPanelFilters.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jPanelFilters.setMinimumSize(new java.awt.Dimension(660, 450));
         jPanelFilters.setPreferredSize(new java.awt.Dimension(660, 450));
+        jPanelFilters.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jPanelFiltersAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         jLabelTime.setText("Time");
 
@@ -646,14 +652,15 @@ public class AppAS extends JFrame {
 
         jLabelTOTime.setText("TO");
 
-        buttonGroupTime.add(jRadioButtonTimeAnd);
+        buttonGroupLogical.add(jRadioButtonAnd);
 
-        buttonGroupTime.add(jRadioButtonTimeOr);
+        buttonGroupLogical.add(jRadioButtonOr);
+        jRadioButtonOr.setSelected(true);
 
-        buttonGroupTime.add(jRadioButtonTimeNot);
+        buttonGroupTypeFilter.add(jRadioButtonNOTtime);
 
-        buttonGroupTime.add(jRadioButtonTimeNotUse);
-        jRadioButtonTimeNotUse.setSelected(true);
+        buttonGroupTypeFilter.add(jRadioButtonNotUse);
+        jRadioButtonNotUse.setSelected(true);
 
         jLabelAND.setText("AND");
 
@@ -687,14 +694,9 @@ public class AppAS extends JFrame {
             }
         });
 
-        buttonGroupLocation.add(jRadioButtonLocationAND);
+        buttonGroupTypeFilter.add(jRadioButtonTime);
 
-        buttonGroupLocation.add(jRadioButtonLocationOR);
-
-        buttonGroupLocation.add(jRadioButtonLocationNOT);
-
-        buttonGroupLocation.add(jRadioButtonLocationNOTUSE);
-        jRadioButtonLocationNOTUSE.setSelected(true);
+        buttonGroupTypeFilter.add(jRadioButtonLocation);
 
         jLabelRadius.setText("Radius");
 
@@ -707,29 +709,46 @@ public class AppAS extends JFrame {
 
         jTextFieldDeviceName.setText("device name");
 
-        buttonGroupDevice.add(jRadioButtonDecviceAND);
-
-        buttonGroupDevice.add(jRadioButtonDecviceOR);
-
-        buttonGroupDevice.add(jRadioButtonDecviceNOT);
-
-        buttonGroupDevice.add(jRadioButtonDecviceNotUse);
-        jRadioButtonDecviceNotUse.setSelected(true);
+        buttonGroupTypeFilter.add(jRadioButtonDecvice);
 
         jLabelYourFilter.setText("Your filter");
 
         jTextFieldYourFilter.setColumns(370);
-        jTextFieldYourFilter.setText("(Time(t0<data<t1) & (!(Position(radius<0.01, center =(32.103, 35.207)))))");
+        jTextFieldYourFilter.setText("(Time(t0<data<t1) & (!(Position(radius<0.01, center =(32.103, 35.207))))) // (Device==name)");
         jTextFieldYourFilter.setMinimumSize(new java.awt.Dimension(370, 30));
         jTextFieldYourFilter.setPreferredSize(new java.awt.Dimension(370, 30));
 
         jButtonFilter.setText("Filter");
+        jButtonFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFilterActionPerformed(evt);
+            }
+        });
 
         jButtonCancel.setText("Cancel");
+        jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelActionPerformed(evt);
+            }
+        });
 
         jButtonUPdate.setText("UPdate");
+        jButtonUPdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUPdateActionPerformed(evt);
+            }
+        });
 
         jButtonYourFilter.setText("YourFilter");
+        jButtonYourFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonYourFilterActionPerformed(evt);
+            }
+        });
+
+        buttonGroupTypeFilter.add(jRadioButtonNOTlocation);
+
+        buttonGroupTypeFilter.add(jRadioButtonNOTdevice);
 
         javax.swing.GroupLayout jPanelFiltersLayout = new javax.swing.GroupLayout(jPanelFilters);
         jPanelFilters.setLayout(jPanelFiltersLayout);
@@ -738,11 +757,22 @@ public class AppAS extends JFrame {
             .addGroup(jPanelFiltersLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelLocation)
-                    .addComponent(jLabelDevice)
-                    .addComponent(jLabelYourFilter)
+                    .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                        .addComponent(jButtonFilter)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabelAND)
+                            .addComponent(jRadioButtonAnd))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jRadioButtonOr)
+                            .addComponent(jLabelOR))
+                        .addGap(185, 185, 185)
+                        .addComponent(jLabelUSE)
+                        .addGap(6, 6, 6))
                     .addGroup(jPanelFiltersLayout.createSequentialGroup()
                         .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldDeviceName, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanelFiltersLayout.createSequentialGroup()
                                 .addComponent(jLabelFROMTime, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(28, 28, 28)
@@ -751,7 +781,6 @@ public class AppAS extends JFrame {
                                 .addComponent(jLabelTOTime)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jFormattedTextFieldTO, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabelTime)
                             .addGroup(jPanelFiltersLayout.createSequentialGroup()
                                 .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelX)
@@ -763,58 +792,50 @@ public class AppAS extends JFrame {
                                         .addComponent(jFormattedTextFieldLantitude, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabelY)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jFormattedTextFieldLongtitude, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jTextFieldDeviceName, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                                .addComponent(jRadioButtonDecviceAND)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButtonDecviceOR)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButtonDecviceNOT))
-                            .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                                .addComponent(jRadioButtonLocationAND)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButtonLocationOR)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButtonLocationNOT))
-                            .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButtonTimeAnd)
-                                    .addComponent(jLabelAND))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButtonTimeOr)
-                                    .addComponent(jLabelOR))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButtonTimeNot)
-                                    .addComponent(jLabelNOT))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelUSE)
-                                    .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                                        .addGap(9, 9, 9)
-                                        .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jRadioButtonLocationNOTUSE)
-                                            .addComponent(jRadioButtonTimeNotUse)
-                                            .addComponent(jRadioButtonDecviceNotUse)))))))
-                    .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelFiltersLayout.createSequentialGroup()
-                            .addComponent(jButtonFilter)
-                            .addGap(60, 60, 60)
-                            .addComponent(jButtonCancel)
-                            .addGap(60, 60, 60)
-                            .addComponent(jButtonUPdate)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonYourFilter))
-                        .addComponent(jTextFieldYourFilter, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(59, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jFormattedTextFieldLongtitude, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jRadioButtonDecvice)
+                    .addComponent(jRadioButtonNotUse)
+                    .addComponent(jRadioButtonLocation)
+                    .addComponent(jRadioButtonTime))
+                .addGap(35, 35, 35)
+                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jRadioButtonNOTdevice)
+                    .addComponent(jRadioButtonNOTlocation)
+                    .addComponent(jRadioButtonNOTtime)
+                    .addComponent(jLabelNOT))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jButtonYourFilter)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonUPdate)
+                .addGap(41, 41, 41)
+                .addComponent(jButtonCancel)
+                .addGap(76, 76, 76))
+            .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jTextFieldYourFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabelYourFilter))
+                    .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabelDevice))
+                    .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabelLocation))
+                    .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabelTime)))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
-        jPanelFiltersLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jRadioButtonLocationAND, jRadioButtonLocationNOT, jRadioButtonLocationNOTUSE, jRadioButtonLocationOR});
+        jPanelFiltersLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jRadioButtonDecvice, jRadioButtonLocation, jRadioButtonNOTdevice, jRadioButtonNOTlocation, jRadioButtonNOTtime, jRadioButtonNotUse, jRadioButtonTime});
 
         jPanelFiltersLayout.setVerticalGroup(
             jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -822,64 +843,77 @@ public class AppAS extends JFrame {
                 .addContainerGap()
                 .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTime)
-                    .addComponent(jLabelAND)
-                    .addComponent(jLabelOR)
-                    .addComponent(jLabelNOT)
-                    .addComponent(jLabelUSE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButtonTimeNot)
-                    .addComponent(jRadioButtonTimeNotUse)
-                    .addComponent(jRadioButtonTimeOr)
-                    .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jFormattedTextFieldFROM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jFormattedTextFieldTO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelFROMTime)
-                        .addComponent(jLabelTOTime)
-                        .addComponent(jRadioButtonTimeAnd)))
-                .addGap(18, 18, 18)
-                .addComponent(jLabelLocation)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButtonLocationNOTUSE)
-                    .addComponent(jRadioButtonLocationAND, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButtonLocationOR, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButtonLocationNOT)
-                    .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelX)
-                        .addComponent(jFormattedTextFieldLantitude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelY)
-                        .addComponent(jFormattedTextFieldLongtitude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelRadius)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabelDevice)
-                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldDeviceName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jRadioButtonDecviceNotUse)
-                            .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jRadioButtonDecviceNOT)
-                                .addComponent(jRadioButtonDecviceOR))
-                            .addComponent(jRadioButtonDecviceAND, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addComponent(jLabelYourFilter)
+                    .addComponent(jLabelNOT))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltersLayout.createSequentialGroup()
+                        .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelAND)
+                            .addComponent(jLabelOR))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButtonOr)
+                            .addComponent(jRadioButtonAnd)))
+                    .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                        .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jFormattedTextFieldFROM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jFormattedTextFieldTO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabelFROMTime)
+                                        .addComponent(jLabelTOTime))
+                                    .addComponent(jRadioButtonNOTtime))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabelLocation))
+                            .addComponent(jRadioButtonTime, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabelX)
+                                    .addComponent(jFormattedTextFieldLantitude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelY)
+                                    .addComponent(jFormattedTextFieldLongtitude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabelRadius)
+                                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabelDevice)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldDeviceName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jRadioButtonLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jRadioButtonNOTlocation))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRadioButtonDecvice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jRadioButtonNOTdevice, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(jButtonFilter))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltersLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jRadioButtonNotUse)
+                                    .addComponent(jLabelUSE))
+                                .addGap(7, 7, 7)))))
+                .addComponent(jLabelYourFilter)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldYourFilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonFilter)
-                    .addComponent(jButtonCancel)
+                    .addComponent(jButtonYourFilter)
                     .addComponent(jButtonUPdate)
-                    .addComponent(jButtonYourFilter))
-                .addContainerGap(129, Short.MAX_VALUE))
+                    .addComponent(jButtonCancel))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
+
+        jPanelFiltersLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jRadioButtonDecvice, jRadioButtonNOTdevice, jRadioButtonNOTlocation, jRadioButtonNOTtime, jRadioButtonNotUse, jRadioButtonTime});
 
         jTabbedPanelTask.addTab("Filter", jPanelFilters);
         jPanelFilters.getAccessibleContext().setAccessibleName("Filters");
@@ -943,7 +977,6 @@ public class AppAS extends JFrame {
                         evt.getKeyChar()== KeyEvent.VK_DELETE)
                     evt.consume();
     }//GEN-LAST:event_jFormattedTextFieldLongtitudeKeyTyped
-
   //this function writes database in kml format
     private void jButtonSaveKMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveKMLActionPerformed
         String str=hf.SaveKML();
@@ -1024,11 +1057,64 @@ public class AppAS extends JFrame {
         jTextFieldLongtitude.setText(String.valueOf(place.getLon()));
         jTextFieldAltitude.setText(String.valueOf(place.getAlt()));
     }//GEN-LAST:event_jButtonOKGPSTSActionPerformed
+    //the function make filter
+    private void jButtonFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFilterActionPerformed
+        if (flag==0)
+        {
+            
+            System.out.println("1");
+            flag++;
+        }
+        else
+            if (flag==1)
+            {
+                System.out.println("2");
+                flag++;
+            }
+            else
+            {
+                System.out.println("only 2");
+            }
+    }//GEN-LAST:event_jButtonFilterActionPerformed
+    //the function back 
+    private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
+        if (flag!=0)
+            flag--;
+        else
+            System.out.println("no filters");
+    }//GEN-LAST:event_jButtonCancelActionPerformed
+    //filter panel is selected
+    private void jPanelFiltersAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanelFiltersAncestorAdded
+        flag=0;
+    }//GEN-LAST:event_jPanelFiltersAncestorAdded
+    //user select her filter
+    private void jButtonYourFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonYourFilterActionPerformed
+        if (flag==0)
+        {
+            
+            System.out.println("1");
+            flag++;
+        }
+        else
+            if (flag==1)
+            {
+                System.out.println("2");
+                flag++;
+            }
+            else
+            {
+                System.out.println("only 2");
+            }
+    }//GEN-LAST:event_jButtonYourFilterActionPerformed
+    //the function update database
+    private void jButtonUPdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUPdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonUPdateActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
-    private javax.swing.ButtonGroup buttonGroupDevice;
-    private javax.swing.ButtonGroup buttonGroupLocation;
-    private javax.swing.ButtonGroup buttonGroupTime;
+    private javax.swing.ButtonGroup buttonGroupLogical;
+    private javax.swing.ButtonGroup buttonGroupTypeFilter;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JButton jButtonBrowseFile;
@@ -1093,18 +1179,15 @@ public class AppAS extends JFrame {
     private javax.swing.JPanel jPanelALGO;
     private javax.swing.JPanel jPanelFilters;
     private javax.swing.JPanel jPanelIOput;
-    private javax.swing.JRadioButton jRadioButtonDecviceAND;
-    private javax.swing.JRadioButton jRadioButtonDecviceNOT;
-    private javax.swing.JRadioButton jRadioButtonDecviceNotUse;
-    private javax.swing.JRadioButton jRadioButtonDecviceOR;
-    private javax.swing.JRadioButton jRadioButtonLocationAND;
-    private javax.swing.JRadioButton jRadioButtonLocationNOT;
-    private javax.swing.JRadioButton jRadioButtonLocationNOTUSE;
-    private javax.swing.JRadioButton jRadioButtonLocationOR;
-    private javax.swing.JRadioButton jRadioButtonTimeAnd;
-    private javax.swing.JRadioButton jRadioButtonTimeNot;
-    private javax.swing.JRadioButton jRadioButtonTimeNotUse;
-    private javax.swing.JRadioButton jRadioButtonTimeOr;
+    private javax.swing.JRadioButton jRadioButtonAnd;
+    private javax.swing.JRadioButton jRadioButtonDecvice;
+    private javax.swing.JRadioButton jRadioButtonLocation;
+    private javax.swing.JRadioButton jRadioButtonNOTdevice;
+    private javax.swing.JRadioButton jRadioButtonNOTlocation;
+    private javax.swing.JRadioButton jRadioButtonNOTtime;
+    private javax.swing.JRadioButton jRadioButtonNotUse;
+    private javax.swing.JRadioButton jRadioButtonOr;
+    private javax.swing.JRadioButton jRadioButtonTime;
     private javax.swing.JTabbedPane jTabbedPanelTask;
     private javax.swing.JTextField jTextFieldAltitude;
     private javax.swing.JTextField jTextFieldDeviceName;
