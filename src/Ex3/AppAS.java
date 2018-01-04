@@ -1314,6 +1314,7 @@ public class AppAS extends JFrame {
                 {
                     File file = new File(pair.getKey());
                     //file deleted
+                    System.out.println(file.exists());
                     if (!file.exists())
                         TableFiles.remove(pair.getKey(), pair.getValue());
                     else                                    //file is modificate
@@ -1341,7 +1342,7 @@ public class AppAS extends JFrame {
                 for (Map.Entry<String, String> pair: TableFolder.entrySet())
                 {
                     File file = new File(pair.getKey());
-                    //folder deleted
+                    //file deleted
                     if (!file.exists())
                         TableFolder.remove(pair.getKey(), pair.getValue());
                     else                                    //folder is modificate

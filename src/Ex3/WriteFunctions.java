@@ -301,7 +301,7 @@ public class WriteFunctions {
     {
         // Convert the string to a byte array
         byte data[] = filter.getBytes();
-        Path p = Paths.get(pathOldFilter);
+        Path p = Paths.get(pathFilter);
         try (OutputStream out = new BufferedOutputStream(
              Files.newOutputStream(p))) 
         {
