@@ -10,7 +10,7 @@ import Ex1.Location;
 /**
  * Location filter for Assignment 3
  * @author Alexey Titov   and   Shalom Weinberger
- * @version 1
+ * @version 2
  */
 public class LocationFilter implements Filter{
     private static final long serialVersionUID = 2L;

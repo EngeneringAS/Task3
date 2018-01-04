@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * interface class filter for Assignment 3
  * @author Alexey Titov   and   Shalom Weinberger
- * @version 1
+ * @version 2
  */
 public interface Filter extends Serializable {
     static final long serialVersionUID = 1L;

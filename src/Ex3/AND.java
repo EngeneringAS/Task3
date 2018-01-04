@@ -9,7 +9,7 @@ import Ex1.DataWIFI;
 /**
  * AND filter for Assignment 3
  * @author Alexey Titov   and   Shalom Weinberger
- * @version 1
+ * @version 2
  */
 public class AND implements Filter{
     private static final long serialVersionUID = 5L;

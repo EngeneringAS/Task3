@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 /**
  * The read functions for help function of Assignment 3
  * @author Alexey Titov   and   Shalom Weinberger
- * @version 1
+ * @version 2
  */
 public class ReadFunctions{
     //variables

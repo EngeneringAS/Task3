@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 package Ex3;
-//library
+//libraries
 import Ex1.DataWIFI;
 import Ex1.Time;
 /**
  * Time filter for Assignment 3
  * @author Alexey Titov   and   Shalom Weinberger
- * @version 1
+ * @version 2
  */
 public class TimeFilter implements Filter{
     private static final long serialVersionUID = 1L;

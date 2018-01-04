@@ -9,7 +9,7 @@ import Ex1.DataWIFI;
 /**
  * Location filter for Assignment 3
  * @author Alexey Titov   and   Shalom Weinberger
- * @version 1
+ * @version 2
  */
 public class DeviceFilter implements Filter{
     private static final long serialVersionUID = 3L;

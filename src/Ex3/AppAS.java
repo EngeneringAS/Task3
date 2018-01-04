@@ -8,8 +8,6 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.io.File;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,10 +16,11 @@ import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
-import javax.swing.text.NumberFormatter;
 
 /**
  * Main window of the AppAS.
+ * @author Alexey Titov   and   Shalom Weinberger
+ * @version 2
  */
 public class AppAS extends JFrame {
 
@@ -83,11 +82,13 @@ public class AppAS extends JFrame {
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        buttonGroupLogical = new javax.swing.ButtonGroup();
+        /*button group: logical(AND , OR) ; filter (not and no name)*/
+    	buttonGroupLogical = new javax.swing.ButtonGroup();
         buttonGroupTypeFilter = new javax.swing.ButtonGroup();
+        /*tabbedpanel: ALGO panel for algorithms*/
         jTabbedPanelTask = new javax.swing.JTabbedPane();
         jPanelALGO = new javax.swing.JPanel();
+        /*labels,button, textfield for panel algo*/
         jLabelSalgorithm = new javax.swing.JLabel();
         jLabelRow = new javax.swing.JLabel();
         jTextFieldRowTS = new javax.swing.JTextField();
@@ -115,6 +116,7 @@ public class AppAS extends JFrame {
         jTextFieldLantitude = new javax.swing.JTextField();
         jTextFieldLongtitude = new javax.swing.JTextField();
         jTextFieldAltitude = new javax.swing.JTextField();
+        /*Input Output panel*/
         jPanelIOput = new javax.swing.JPanel();
         jLabelAddFolder = new javax.swing.JLabel();
         jLabelAddFile = new javax.swing.JLabel();
@@ -136,6 +138,7 @@ public class AppAS extends JFrame {
         jButtonSaveKML = new javax.swing.JButton();
         jButtonShowData = new javax.swing.JButton();
         jTextFieldFilter = new javax.swing.JTextField();
+        /*panel for filters*/
         jPanelFilters = new javax.swing.JPanel();
         jLabelTime = new javax.swing.JLabel();
         jFormattedTextFieldFROM = new javax.swing.JFormattedTextField();
@@ -151,10 +154,9 @@ public class AppAS extends JFrame {
         jLabelLocation = new javax.swing.JLabel();
         jLabelX = new javax.swing.JLabel();
         //create a formatted location text field
-        NumberFormat number = new DecimalFormat("###.########");
-        jFormattedTextFieldLantitude = new javax.swing.JFormattedTextField(new NumberFormatter(number));
+        jFormattedTextFieldLantitude = new javax.swing.JFormattedTextField(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#.00000000"))));
         jLabelY = new javax.swing.JLabel();
-        jFormattedTextFieldLongtitude = new javax.swing.JFormattedTextField(new NumberFormatter(number));
+        jFormattedTextFieldLongtitude = new javax.swing.JFormattedTextField(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#.00000000"))));
         jRadioButtonTime = new javax.swing.JRadioButton();
         jRadioButtonLocation = new javax.swing.JRadioButton();
         jLabelRadius = new javax.swing.JLabel();
@@ -169,11 +171,12 @@ public class AppAS extends JFrame {
         jRadioButtonNOTdevice = new javax.swing.JRadioButton();
         jLabelNumberFilters = new javax.swing.JLabel();
         jButtonUNDO = new javax.swing.JButton();
+        /*dialog panel*/
         mainMenu = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
-
+        /*properties of frame*/
         setTitle("AppWIFI");
         setMaximumSize(new java.awt.Dimension(660, 500));
         setMinimumSize(new java.awt.Dimension(660, 500));
@@ -184,11 +187,11 @@ public class AppAS extends JFrame {
                 exitForm(evt);
             }
         });
-
+        /*properties of tabbed panel task*/
         jTabbedPanelTask.setMaximumSize(new java.awt.Dimension(660, 480));
         jTabbedPanelTask.setMinimumSize(new java.awt.Dimension(660, 480));
         jTabbedPanelTask.setPreferredSize(new java.awt.Dimension(660, 480));
-
+        /*properties of algo panel*/
         jPanelALGO.setBackground(new java.awt.Color(255, 204, 204));
         jPanelALGO.setMinimumSize(new java.awt.Dimension(660, 450));
         jPanelALGO.setPreferredSize(new java.awt.Dimension(660, 450));
@@ -216,9 +219,7 @@ public class AppAS extends JFrame {
         });
 
         jLabelMAC1.setText("MAC");
-
         jLabelMAC2.setText("MAC");
-
         jLabelMAC3.setText("MAC");
 
         jFormattedTextFieldMAC1.setColumns(20);
@@ -252,9 +253,7 @@ public class AppAS extends JFrame {
         jFormattedTextFieldMAC3.setPreferredSize(new java.awt.Dimension(150, 30));
 
         jLabelSignal1.setText("Signal");
-
         jLabelSignal2.setText("Signal");
-
         jLabelSignal3.setText("Signal");
 
         jFormattedTextFieldSignal1.setColumns(4);
@@ -293,17 +292,13 @@ public class AppAS extends JFrame {
         jLabelMACfa.setText("MAC");
 
         jLabelLantitude.setText("Lantitude");
-
         jLabelLongtitude.setText("Longtitude");
-
         jLabelAltitude.setText("Altitude");
 
         jTextFieldLantitude.setEditable(false);
-
         jTextFieldLongtitude.setEditable(false);
-
         jTextFieldAltitude.setEditable(false);
-
+        /*adding items to the panel*/
         javax.swing.GroupLayout jPanelALGOLayout = new javax.swing.GroupLayout(jPanelALGO);
         jPanelALGO.setLayout(jPanelALGOLayout);
         jPanelALGOLayout.setHorizontalGroup(
@@ -450,9 +445,7 @@ public class AppAS extends JFrame {
         });
 
         jLabelAddFolder.setText("Add Folder of Wigle files");
-
         jLabelAddFile.setText("Add wigle file");
-
         jLabelCB.setText("Clear database");
 
         jLabelSD.setText("Save the data in a special file");
@@ -551,7 +544,7 @@ public class AppAS extends JFrame {
         jTextFieldFilter.setEditable(false);
         jTextFieldFilter.setColumns(50);
         jTextFieldFilter.setText("Filter:");
-
+        /*adding items to the panel*/
         javax.swing.GroupLayout jPanelIOputLayout = new javax.swing.GroupLayout(jPanelIOput);
         jPanelIOput.setLayout(jPanelIOputLayout);
         jPanelIOputLayout.setHorizontalGroup(
@@ -690,9 +683,7 @@ public class AppAS extends JFrame {
         buttonGroupTypeFilter.add(jRadioButtonNOTtime);
 
         jLabelAND.setText("AND");
-
         jLabelOR.setText("OR");
-
         jLabelNOT.setText("NOT");
 
         jLabelLocation.setText("Location");
@@ -760,7 +751,7 @@ public class AppAS extends JFrame {
                 jButtonUNDOActionPerformed(evt);
             }
         });
-
+        /*adding items to the panel*/
         javax.swing.GroupLayout jPanelFiltersLayout = new javax.swing.GroupLayout(jPanelFilters);
         jPanelFilters.setLayout(jPanelFiltersLayout);
         jPanelFiltersLayout.setHorizontalGroup(
