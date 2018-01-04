@@ -13,5 +13,6 @@ import java.io.Serializable;
  * @version 1
  */
 public interface Filter extends Serializable {
+    static final long serialVersionUID = 1L;
     public boolean Compare(DataWIFI arg);
 }

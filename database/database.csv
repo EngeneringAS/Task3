@@ -1,2 +1,7 @@
 TIME,ID,latitude,longitude,altitude,#WiFi networks,SSID1,MAC1,Frequency1,Signal1,SSID2,MAC2,Frequency2,Signal2,SSID3,MAC3,Frequency3,Signal3,SSID4,MAC4,Frequency4,Signal4,SSID5,MAC5,Frequency5,Signal5,SSID6,MAC6,Frequency6,Signal6,SSID7,MAC7,Frequency7,Signal7,SSID8,MAC8,Frequency8,Signal8,SSID9,MAC9,Frequency9,Signal9,SSID10,MAC10,Frequency10,Signal10
-2017-11-02 09:19:07,MPIS,32.10332585,35.209372,720.0,1,,fc:c2:de:ae:1f:3a,1,-72
+2017-11-02 12:33:50,LRX22G.A1442060254,32.103,35.208,650.0,1,Ariel_University,1b:b9:c4:a2:7c:c8,11,-30
+2017-11-02 12:35:51,LRX22G.A1442060254,32.1,35.205,660.0,2,Ariel_University,1a:b9:c4:12:ff:c8,11,-8,Ariel_University,1c:b9:c4:32:af:c8,11,-80
+2017-11-02 12:33:51,LRX22G.A1442060254,32.1,35.2,660.0,1,Ariel_University,1a:b9:c4:12:ff:cc,11,-8
+2017-11-02 10:35:51,LRX22G.A1442060254,32.1,35.2,660.0,1,Ariel_University,1c:b9:c4:12:ba:c8,11,-80
+2017-11-02 10:35:51,LRX22G.A1442060254,32.1,35.205,660.0,1,Ariel_University,1c:b9:c4:12:aa:c8,11,-80
+2017-11-02 10:38:51,LRX22G.A1442060254,32.1,35.2,660.0,1,Ariel_University,1c:89:c4:12:ba:c8,11,-80

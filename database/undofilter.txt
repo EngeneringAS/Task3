@@ -1,0 +1,1 @@
+Position(radius<0.03,center=(32.103,32.103)

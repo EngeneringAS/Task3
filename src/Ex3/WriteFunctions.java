@@ -23,11 +23,9 @@ import java.io.BufferedOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
-import static java.lang.ProcessBuilder.Redirect.Type.APPEND;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import static java.nio.file.StandardOpenOption.CREATE;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFileChooser;
@@ -40,8 +38,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class WriteFunctions {
     //variable
-    private final String pathDataBase="database//database.csv";     //path to database
-    private final String pathFilter="database//filter.txt";         //path to filter
+    private final String pathDataBase="database//database.csv";         //path to database
+    private final String pathUNDO="database//UNDO.csv";                 //path to UNDO database
+    private final String pathFilter="database//filter.txt";             //path to filter
+    private final String pathOldFilter="database//undofilter.txt";      //path to filter
     /**
      * the function generates and set a placemark object, with the given statistical data
      * @param document structure of the KML file
@@ -194,11 +194,15 @@ public class WriteFunctions {
             JOptionPane.showMessageDialog(null, "csv record not saved");
         }
     }
-    //
+    //save filter
     public void WriteFilter(Filter filter)
     {
+        String s;
         // Convert the string to a byte array
-        String s = filter.toString();
+        if (filter==null)
+            s="null";
+        else
+            s = filter.toString();
         byte data[] = s.getBytes();
         Path p = Paths.get(pathFilter);
         try (OutputStream out = new BufferedOutputStream(
@@ -207,6 +211,103 @@ public class WriteFunctions {
              out.write(data, 0, data.length);
         }catch(IOException x){
             JOptionPane.showMessageDialog(null, "filter.txt record not saved");
+        }
+    }
+    /**
+    * the function write csv file
+     * @param dwf list of data for csv file
+     */
+    public void WriteClearCSV(ArrayList<DataWIFI> dwf)
+    {
+        try {
+            // use FileWriter constructor that specifies open for appending
+            CsvWriter csvOutput = new CsvWriter(new FileWriter(pathDataBase, false), ',');	
+            //headers for first row
+            csvOutput.write("TIME");	csvOutput.write("ID");
+            csvOutput.write("latitude");	csvOutput.write("longitude");	csvOutput.write("altitude");
+            csvOutput.write("#WiFi networks");
+            for (int i=1;i<11;i++)
+            {
+                csvOutput.write("SSID"+i);
+                csvOutput.write("MAC"+i);
+                csvOutput.write("Frequency"+i);
+                csvOutput.write("Signal"+i);
+            }
+            csvOutput.endRecord();
+            //write out a few rows
+            for(int i=0;i<dwf.size();i++)               //write rows of data wifi
+            {
+                String[] tmp=dwf.get(i).toString().split(",");
+                csvOutput.writeRecord(tmp);
+            }
+            csvOutput.close();
+            JOptionPane.showMessageDialog(null, "UNDO finish");
+        } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "UNDO no finish");
+            }catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "UNDO no finish");
+            }
+    }
+    /**
+    * the function write csv file
+     * @param dwf list of data for csv file
+     */
+    public void WriteUNDO(ArrayList<DataWIFI> dwf)
+    {
+        try {
+            // use FileWriter constructor that specifies open for appending
+            CsvWriter csvOutput = new CsvWriter(new FileWriter(pathUNDO, false), ',');	
+            //headers for first row
+            csvOutput.write("TIME");	csvOutput.write("ID");
+            csvOutput.write("latitude");	csvOutput.write("longitude");	csvOutput.write("altitude");
+            csvOutput.write("#WiFi networks");
+            for (int i=1;i<11;i++)
+            {
+                csvOutput.write("SSID"+i);
+                csvOutput.write("MAC"+i);
+                csvOutput.write("Frequency"+i);
+                csvOutput.write("Signal"+i);
+            }
+            csvOutput.endRecord();
+            //write out a few rows
+            for(int i=0;i<dwf.size();i++)               //write rows of data wifi
+            {
+                String[] tmp=dwf.get(i).toString().split(",");
+                csvOutput.writeRecord(tmp);
+            }
+            csvOutput.close();
+        } catch (IOException e) {
+                return;
+            }catch (Exception e) {
+                return;
+            }
+    }
+    //write old filter
+    public void WriteOldFilter(String old_filter)
+    {
+        // Convert the string to a byte array
+        byte data[] = old_filter.getBytes();
+        Path p = Paths.get(pathOldFilter);
+        try (OutputStream out = new BufferedOutputStream(
+             Files.newOutputStream(p))) 
+        {
+             out.write(data, 0, data.length);
+        }catch(IOException x){
+            return;
+        }
+    }
+    //
+    public void WriteFilter(String filter)
+    {
+        // Convert the string to a byte array
+        byte data[] = filter.getBytes();
+        Path p = Paths.get(pathOldFilter);
+        try (OutputStream out = new BufferedOutputStream(
+             Files.newOutputStream(p))) 
+        {
+             out.write(data, 0, data.length);
+        }catch(IOException x){
+            return;
         }
     }
 }

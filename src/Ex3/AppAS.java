@@ -1,5 +1,4 @@
 /* AppAS Application for assignment 3 */
-
 package Ex3;
 //libraries
 import Ex1.DataWIFI;
@@ -8,15 +7,18 @@ import Ex1.WIFI;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
+import java.io.File;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.text.NumberFormatter;
 
@@ -26,14 +28,15 @@ import javax.swing.text.NumberFormatter;
 public class AppAS extends JFrame {
 
     //define variables
-    private final int limit=5;
-    private final HelpFunctionEx3 hf=new HelpFunctionEx3();
-    private final ReadFunctions rf=new ReadFunctions();
+    private static final HelpFunctionEx3 hf=new HelpFunctionEx3();
+    private static final ReadFunctions rf=new ReadFunctions();
     private int flag=0;
+    private boolean flag_UNDO=false;
     private Filter first;
     private Filter second;
     private Filter union;
-    
+    private static Map<String,String> TableFiles=new HashMap();
+    private static Map<String,String> TableFolder=new HashMap();
     public static void main(String[] args)
     {
         /* Set the Nimbus look and feel */
@@ -52,14 +55,13 @@ public class AppAS extends JFrame {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(AppAS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        
-        //</editor-fold>
-        //</editor-fold>
-
         /* Create and display the form */
-        SwingUtilities.invokeLater(new RunnableImpl());
+        Thread t1 = new Thread(new RunnableImpl());     //SwingUtilities.invokeLater(new RunnableImpl());
+        Thread t2 = new ThreadTable();
+        Thread t3 = new ThreadTableFolder();
+        t1.start();
+        t2.start();
+        t3.start();
     }
     /** Creates new form AppAS */
     public AppAS() 
@@ -166,20 +168,25 @@ public class AppAS extends JFrame {
         jButtonUPdate = new javax.swing.JButton();
         jRadioButtonNOTlocation = new javax.swing.JRadioButton();
         jRadioButtonNOTdevice = new javax.swing.JRadioButton();
+        jLabelNumberFilters = new javax.swing.JLabel();
+        jButtonUNDO = new javax.swing.JButton();
         mainMenu = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
 
         setTitle("AppWIFI");
+        setMaximumSize(new java.awt.Dimension(660, 500));
         setMinimumSize(new java.awt.Dimension(660, 500));
         setPreferredSize(new java.awt.Dimension(660, 500));
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 exitForm(evt);
             }
         });
 
+        jTabbedPanelTask.setMaximumSize(new java.awt.Dimension(660, 480));
         jTabbedPanelTask.setMinimumSize(new java.awt.Dimension(660, 480));
         jTabbedPanelTask.setPreferredSize(new java.awt.Dimension(660, 480));
 
@@ -694,24 +701,14 @@ public class AppAS extends JFrame {
         jLabelX.setText("lantitude");
 
         jFormattedTextFieldLantitude.setColumns(18);
-        jFormattedTextFieldLantitude.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###.#############"))));
-        jFormattedTextFieldLantitude.setText("32.103");
-        jFormattedTextFieldLantitude.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jFormattedTextFieldLantitudeKeyTyped(evt);
-            }
-        });
+        jFormattedTextFieldLantitude.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#.00000000"))));
+        jFormattedTextFieldLantitude.setText("32.33");
 
         jLabelY.setText("longitude");
 
         jFormattedTextFieldLongtitude.setColumns(18);
-        jFormattedTextFieldLongtitude.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###.#############"))));
-        jFormattedTextFieldLongtitude.setText("35.203");
-        jFormattedTextFieldLongtitude.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jFormattedTextFieldLongtitudeKeyTyped(evt);
-            }
-        });
+        jFormattedTextFieldLongtitude.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#.00000000"))));
+        jFormattedTextFieldLongtitude.setText("35.33");
 
         buttonGroupTypeFilter.add(jRadioButtonTime);
 
@@ -720,8 +717,8 @@ public class AppAS extends JFrame {
         jLabelRadius.setText("Radius");
 
         jFormattedTextFieldRadius.setColumns(8);
-        jFormattedTextFieldRadius.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0.0000"))));
-        jFormattedTextFieldRadius.setText("0,03");
+        jFormattedTextFieldRadius.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#.00000000"))));
+        jFormattedTextFieldRadius.setText("0.03");
         jFormattedTextFieldRadius.setMinimumSize(new java.awt.Dimension(8, 20));
 
         jLabelDevice.setText("Device");
@@ -756,6 +753,15 @@ public class AppAS extends JFrame {
 
         buttonGroupTypeFilter.add(jRadioButtonNOTdevice);
 
+        jLabelNumberFilters.setText("0");
+
+        jButtonUNDO.setText("UNDO");
+        jButtonUNDO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUNDOActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelFiltersLayout = new javax.swing.GroupLayout(jPanelFilters);
         jPanelFilters.setLayout(jPanelFiltersLayout);
         jPanelFiltersLayout.setHorizontalGroup(
@@ -764,7 +770,9 @@ public class AppAS extends JFrame {
                 .addContainerGap()
                 .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(11, 11, 11)
+                        .addComponent(jLabelNumberFilters)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabelAND)
                             .addComponent(jRadioButtonAnd))
@@ -774,56 +782,63 @@ public class AppAS extends JFrame {
                             .addComponent(jLabelOR))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                        .addComponent(jButtonFilter)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonCancel)
-                        .addGap(99, 99, 99))
-                    .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                        .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                                        .addGap(8, 8, 8)
-                                        .addComponent(jLabelX))
-                                    .addComponent(jLabelRadius, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jFormattedTextFieldRadius, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                                        .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jButtonUPdate)
-                                            .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                                                .addComponent(jFormattedTextFieldLantitude, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabelY)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jFormattedTextFieldLongtitude, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanelFiltersLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabelFROMTime, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jFormattedTextFieldFROM, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabelTOTime)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jFormattedTextFieldTO, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabelLocation)
-                            .addComponent(jLabelTime)
-                            .addComponent(jLabelDevice)
-                            .addComponent(jTextFieldDeviceName))
-                        .addGap(57, 57, 57)
-                        .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jRadioButtonLocation)
-                            .addComponent(jRadioButtonTime)
-                            .addComponent(jRadioButtonDecvice))
-                        .addGap(18, 18, 18)
                         .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelNOT)
-                            .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                .addComponent(jRadioButtonNOTdevice)
-                                .addComponent(jRadioButtonNOTlocation, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jRadioButtonNOTtime))
-                        .addContainerGap(133, Short.MAX_VALUE))))
+                            .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                                    .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                                            .addGap(8, 8, 8)
+                                            .addComponent(jLabelX))
+                                        .addComponent(jLabelRadius, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jFormattedTextFieldRadius, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                                            .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                                                    .addComponent(jButtonCancel)
+                                                    .addGap(110, 110, 110))
+                                                .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                                                    .addComponent(jFormattedTextFieldLantitude, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(jLabelY)))
+                                            .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addComponent(jFormattedTextFieldLongtitude, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFiltersLayout.createSequentialGroup()
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jButtonUPdate))))))
+                                .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(jLabelFROMTime, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jFormattedTextFieldFROM, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabelTOTime)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jFormattedTextFieldTO, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabelLocation)
+                                .addComponent(jLabelTime)
+                                .addComponent(jLabelDevice)
+                                .addComponent(jTextFieldDeviceName))
+                            .addComponent(jButtonFilter))
+                        .addGap(57, 57, 57)
+                        .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelFiltersLayout.createSequentialGroup()
+                                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jRadioButtonLocation)
+                                    .addComponent(jRadioButtonTime)
+                                    .addComponent(jRadioButtonDecvice))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelNOT)
+                                    .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                        .addComponent(jRadioButtonNOTdevice)
+                                        .addComponent(jRadioButtonNOTlocation, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(jRadioButtonNOTtime)))
+                            .addComponent(jButtonUNDO))
+                        .addContainerGap(132, Short.MAX_VALUE))))
         );
 
         jPanelFiltersLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jRadioButtonDecvice, jRadioButtonLocation, jRadioButtonNOTdevice, jRadioButtonNOTlocation, jRadioButtonNOTtime, jRadioButtonTime});
@@ -876,14 +891,18 @@ public class AppAS extends JFrame {
                     .addComponent(jLabelAND)
                     .addComponent(jLabelOR))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButtonOr)
-                    .addComponent(jRadioButtonAnd))
+                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jRadioButtonOr)
+                        .addComponent(jRadioButtonAnd))
+                    .addComponent(jLabelNumberFilters))
                 .addGap(18, 18, 18)
-                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonFilter)
-                    .addComponent(jButtonUPdate)
-                    .addComponent(jButtonCancel))
+                .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelFiltersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonFilter)
+                        .addComponent(jButtonCancel)
+                        .addComponent(jButtonUNDO))
+                    .addComponent(jButtonUPdate))
                 .addContainerGap(173, Short.MAX_VALUE))
         );
 
@@ -925,32 +944,18 @@ public class AppAS extends JFrame {
 
         getAccessibleContext().setAccessibleDescription("");
     }// </editor-fold>//GEN-END:initComponents
-
+    //user choose 'About'
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
         new About(this).setVisible(true);
     }//GEN-LAST:event_aboutMenuItemActionPerformed
-
+    //user chooce exit from application
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
-
+    //user choose 'X'
     private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
         System.exit(0);
     }//GEN-LAST:event_exitForm
-
-    private void jFormattedTextFieldLantitudeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextFieldLantitudeKeyTyped
-       if(jFormattedTextFieldLantitude.getText().length()>=limit &&
-                        evt.getKeyChar()!= KeyEvent.VK_BACK_SPACE &&
-                        evt.getKeyChar()== KeyEvent.VK_DELETE)
-                    evt.consume();
-    }//GEN-LAST:event_jFormattedTextFieldLantitudeKeyTyped
-
-    private void jFormattedTextFieldLongtitudeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextFieldLongtitudeKeyTyped
-        if(jFormattedTextFieldLongtitude.getText().length()>=limit &&
-                        evt.getKeyChar()!= KeyEvent.VK_BACK_SPACE &&
-                        evt.getKeyChar()== KeyEvent.VK_DELETE)
-                    evt.consume();
-    }//GEN-LAST:event_jFormattedTextFieldLongtitudeKeyTyped
   //this function writes database in kml format
     private void jButtonSaveKMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveKMLActionPerformed
         String str=hf.SaveKML();
@@ -964,6 +969,7 @@ public class AppAS extends JFrame {
     //the function cleaning database
     private void jButtonClearOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearOKActionPerformed
         hf.Clear();
+        hf.WriteFilter();
         InitializationIOPanel();
     }//GEN-LAST:event_jButtonClearOKActionPerformed
     //the function browse a folder with the Wigle files
@@ -980,11 +986,21 @@ public class AppAS extends JFrame {
     }//GEN-LAST:event_jButtonSaveFileActionPerformed
     //the function add data from wigle file to database
     private void jButtonOKFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOKFileActionPerformed
+        File file = new File(jTextFieldNameFile.getText());
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         hf.AddFile(jTextFieldNameFile.getText());
+        TableFiles.putIfAbsent(jTextFieldNameFile.getText(),sdf.format(file.lastModified()));
+        hf.WriteFilter();
+        jTextFieldNameFile.setText("Name File");
     }//GEN-LAST:event_jButtonOKFileActionPerformed
     //the function add data from wigle folder to database
     private void jButtonOKFolderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOKFolderActionPerformed
+        File file = new File(jTextFieldNameFolder.getText());
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         hf.AddFolder(jTextFieldNameFolder.getText());
+        TableFolder.putIfAbsent(jTextFieldNameFolder.getText(),sdf.format(file.lastModified()));
+        hf.WriteFilter();
+        jTextFieldNameFolder.setText("Name Folder");
     }//GEN-LAST:event_jButtonOKFolderActionPerformed
     //the function makes the first algorithm
     private void jButtonFirstALGOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFirstALGOActionPerformed
@@ -997,9 +1013,9 @@ public class AppAS extends JFrame {
     private void jButtonOKThreeMACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOKThreeMACActionPerformed
         try{
         //variables
-        ArrayList<DataWIFI> dwf=new ArrayList<>();
+        ArrayList<DataWIFI> dwf;
         DataWIFI ThreeMAC=new DataWIFI();
-        Location place=new Location();
+        Location place;
         WIFI tmp1=new WIFI();   WIFI tmp2=new WIFI();   WIFI tmp3=new WIFI();
         if (tmp1.setMAC(jFormattedTextFieldMAC1.getText().toLowerCase())==1)
         {
@@ -1029,8 +1045,8 @@ public class AppAS extends JFrame {
     private void jButtonOKGPSTSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOKGPSTSActionPerformed
         //variables
         String str=jTextFieldRowTS.getText();
-        ArrayList<DataWIFI> dwf=new ArrayList<>();
-        Location place=new Location();
+        ArrayList<DataWIFI> dwf;
+        Location place;
         dwf=rf.ReadDataBase();
         place=hf.RowTS(dwf,str);
         jTextFieldLantitude.setText(String.valueOf(place.getLat()));
@@ -1052,12 +1068,13 @@ public class AppAS extends JFrame {
                 if (jRadioButtonLocation.isSelected() || jRadioButtonNOTlocation.isSelected())
                 {
                     Location lla=new Location();
-                    lla.setLat(Double.parseDouble(jFormattedTextFieldLantitude.getText()));
-                    lla.setLon(Double.parseDouble(jFormattedTextFieldLantitude.getText()));
+                    double rad=Double.parseDouble(jFormattedTextFieldRadius.getText().replace(',', '.'));
+                    lla.setLat(Double.parseDouble(jFormattedTextFieldLantitude.getText().replace(',', '.')));
+                    lla.setLon(Double.parseDouble(jFormattedTextFieldLantitude.getText().replace(',', '.')));
                     if (jRadioButtonNOTlocation.isSelected())
-                        tmp=new NOT(new LocationFilter(Double.parseDouble(jFormattedTextFieldRadius.getText()),lla));
+                        tmp=new NOT(new LocationFilter(rad,lla));
                     else
-                        tmp=new LocationFilter(Double.parseDouble(jFormattedTextFieldRadius.getText()),lla);
+                        tmp=new LocationFilter(rad,lla);
                 }
                 else
                     if(jRadioButtonDecvice.isSelected() || jRadioButtonNOTdevice.isSelected())
@@ -1067,24 +1084,25 @@ public class AppAS extends JFrame {
                         else
                             tmp=new DeviceFilter(jTextFieldDeviceName.getText());
                     }
-            if (flag==0)
-            {
-                first=tmp;
-                flag++;
-            }
-            else
-                if (flag==1)
-                {
+            switch (flag) {
+                case 0:
+                    first=tmp;
+                    flag++;
+                    jLabelNumberFilters.setText("1");
+                    break;
+                case 1:
                     second=tmp;
                     flag++;
                     if(jRadioButtonOr.isSelected())
                         union=new OR(first,second);
                     else
                         union=new AND(first,second);
-                    System.out.println(union.toString());
-                }
-                else
+                    jLabelNumberFilters.setText("2");
+                    break;
+                default:
                     JOptionPane.showMessageDialog(null, "max two filters");
+                    break;
+            }
         }catch(NullPointerException | NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Input is incorrect");
         }
@@ -1096,6 +1114,7 @@ public class AppAS extends JFrame {
             second=null;
             union=null;
             flag--;
+            jLabelNumberFilters.setText("1");
         }
         else
             if (flag==1)
@@ -1117,6 +1136,7 @@ public class AppAS extends JFrame {
         jFormattedTextFieldLongtitude.setText("35,203");
         jFormattedTextFieldFROM.setText(dateString);
         jFormattedTextFieldTO.setText(dateString);
+        jLabelNumberFilters.setText("0");
     }
     //the function initialization IO panel
     private void InitializationIOPanel()
@@ -1136,14 +1156,18 @@ public class AppAS extends JFrame {
     private void jButtonUPdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUPdateActionPerformed
         if (flag==1)
         {
+            hf.WriteUNDO();
             hf.WriteFilter(first);
             InitializationFilterPanel();
+            flag_UNDO=true;
         }
         else
             if (flag==2)
             {
+                hf.WriteUNDO();
                 hf.WriteFilter(union);
                 InitializationFilterPanel();
+                flag_UNDO=true;
             }
             else
                 JOptionPane.showMessageDialog(null, "no filters");
@@ -1166,7 +1190,16 @@ public class AppAS extends JFrame {
         jTextFieldLongtitude.setText("");
         jTextFieldAltitude.setText("");
     }//GEN-LAST:event_jPanelALGOAncestorAdded
-
+    //user choose UNDO
+    private void jButtonUNDOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUNDOActionPerformed
+        if (flag_UNDO)
+        {
+            hf.UNDO();
+            flag_UNDO=false;
+        }
+        else
+            JOptionPane.showMessageDialog(null, "once can be done");
+    }//GEN-LAST:event_jButtonUNDOActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.ButtonGroup buttonGroupLogical;
@@ -1186,6 +1219,7 @@ public class AppAS extends JFrame {
     private javax.swing.JButton jButtonSaveFile;
     private javax.swing.JButton jButtonSaveKML;
     private javax.swing.JButton jButtonShowData;
+    private javax.swing.JButton jButtonUNDO;
     private javax.swing.JButton jButtonUPdate;
     private javax.swing.JFormattedTextField jFormattedTextFieldFROM;
     private javax.swing.JFormattedTextField jFormattedTextFieldLantitude;
@@ -1215,6 +1249,7 @@ public class AppAS extends JFrame {
     private javax.swing.JLabel jLabelMAC3;
     private javax.swing.JLabel jLabelMACfa;
     private javax.swing.JLabel jLabelNOT;
+    private javax.swing.JLabel jLabelNumberFilters;
     private javax.swing.JLabel jLabelOR;
     private javax.swing.JLabel jLabelRadius;
     private javax.swing.JLabel jLabelRow;
@@ -1259,7 +1294,7 @@ public class AppAS extends JFrame {
     {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("WiFi.jpg")));
     }
-
+    //run GUI
     private static class RunnableImpl implements Runnable {
 
         public RunnableImpl() {
@@ -1268,6 +1303,59 @@ public class AppAS extends JFrame {
         public void run()
         {
             new AppAS().setVisible(true);
+        }
+    }
+    //run TableFiles
+    private static class ThreadTable extends Thread {
+        public ThreadTable() {
+        }
+        //run for thread update
+        public void run() {
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+            while(true)
+            {
+                for (Map.Entry<String, String> pair: TableFiles.entrySet())
+                {
+                    File file = new File(pair.getKey());
+                    //file deleted
+                    if (!file.exists())
+                        TableFiles.remove(pair.getKey(), pair.getValue());
+                    else                                    //file is modificate
+                        if (!sdf.format(file.lastModified()).equals(pair.getValue()))
+                        {
+                            hf.AddFile(pair.getKey());
+                            TableFiles.replace(pair.getKey(),sdf.format(file.lastModified()));
+                        }
+                }
+            }
+        }
+    }
+    //run TableFolder
+    private static class ThreadTableFolder extends Thread 
+    {
+        public ThreadTableFolder() {
+        }
+        //run for thread update
+        @Override
+        public void run()
+        {
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+            while(true)
+            {
+                for (Map.Entry<String, String> pair: TableFolder.entrySet())
+                {
+                    File file = new File(pair.getKey());
+                    //file deleted
+                    if (!file.exists())
+                        TableFolder.remove(pair.getKey(), pair.getValue());
+                    else                                    //folder is modificate
+                        if (!sdf.format(file.lastModified()).equals(pair.getValue()))
+                        {
+                            hf.AddFolder(pair.getKey());
+                            TableFolder.replace(pair.getKey(),sdf.format(file.lastModified()));
+                        }
+                }
+            }
         }
     }
 }

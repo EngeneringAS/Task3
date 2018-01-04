@@ -30,6 +30,7 @@ public class HelpFunctionEx3
 {
     //variables
     private final String pathDataBase="database//database.csv";     //path to database
+    private final String pathUNDO="database//UNDO.csv";             //path to database
     private ReadFunctions rf=new ReadFunctions();
     private WriteFunctions wf=new WriteFunctions();
     //this function clears the database
@@ -175,7 +176,7 @@ public class HelpFunctionEx3
         return newdata;
     }
     //the function add data from the wigle file to database
-    public void AddFile(String filepath)
+    public synchronized void AddFile(String filepath)
     {
         ArrayList<String> csvFiles=new ArrayList<>();
         csvFiles.add(filepath);
@@ -183,7 +184,7 @@ public class HelpFunctionEx3
         wf.WriteCSV(fileData);
     }
     //the function add data from wigle folder to database
-    public void AddFolder(String folderpath)
+    public synchronized void AddFolder(String folderpath)
     {
         //variables
         ArrayList<String> files=new ArrayList<String>();	//list csv files
@@ -304,7 +305,7 @@ public class HelpFunctionEx3
     {
         return rf.ReadShowFilter();
     }
-    //
+    //update database with filter
     public void WriteFilter(Filter _filter)
     {
         ArrayList<DataWIFI> dwf=rf.ReadDataBase();
@@ -318,5 +319,23 @@ public class HelpFunctionEx3
         Clear();
         wf.WriteCSV(dwf);
         wf.WriteFilter(_filter);
+    }
+    //add, clear
+    public void WriteFilter()
+    {
+        Filter tmp=null;
+        wf.WriteFilter(tmp);
+    }
+    //back to old database
+    public void UNDO()
+    {
+       wf.WriteClearCSV(rf.ReadUNDO());
+       wf.WriteFilter(rf.ReadOldFilter());
+    }
+    //write old data to UNDO
+    public void WriteUNDO()
+    {
+        wf.WriteUNDO(rf.ReadDataBase());
+        wf.WriteOldFilter(rf.ReadShowFilter());
     }
 }
