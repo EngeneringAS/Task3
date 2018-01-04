@@ -13,6 +13,7 @@ import Ex1.Time;
  * @version 1
  */
 public class TimeFilter implements Filter{
+    private static final long serialVersionUID = 1L;
     private Time _from=new Time();;
     private Time _to=new Time();;
     /**

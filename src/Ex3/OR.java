@@ -12,6 +12,7 @@ import Ex1.DataWIFI;
  * @version 1
  */
 public class OR implements Filter{
+    private static final long serialVersionUID = 7L;
     private Filter first_f;
     private Filter second_f;
     /**

@@ -34,7 +34,6 @@ package Ex3;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.event.ActionListener;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 
@@ -42,7 +41,7 @@ import javax.swing.JFrame;
  * About dialog of the Anagram Game application.
  */
 public class About extends JDialog {
-
+    private static final long serialVersionUID = 4L;
     /** Creates new form About
      * @param parent-AppAS frame */
     public About(JFrame parent) {

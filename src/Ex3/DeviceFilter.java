@@ -12,6 +12,7 @@ import Ex1.DataWIFI;
  * @version 1
  */
 public class DeviceFilter implements Filter{
+    private static final long serialVersionUID = 3L;
     private String NameDevice;
     /**
      * the constructor for DeviceFilter

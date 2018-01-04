@@ -13,6 +13,7 @@ import Ex1.Location;
  * @version 1
  */
 public class LocationFilter implements Filter{
+    private static final long serialVersionUID = 2L;
     private double radius;
     private Location lla;
     /**

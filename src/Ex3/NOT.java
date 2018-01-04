@@ -14,6 +14,7 @@ import Ex1.DataWIFI;
  * @version 1
  */
 public class NOT implements Filter{
+    private static final long serialVersionUID = 6L;
     private Filter _notFilter;
     /**
      * constructor for NOT

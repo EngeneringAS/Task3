@@ -15,8 +15,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -28,6 +26,7 @@ import javax.swing.text.NumberFormatter;
 public class AppAS extends JFrame {
 
     //define variables
+    private static final long serialVersionUID = 8L;
     private static final HelpFunctionEx3 hf=new HelpFunctionEx3();
     private static final ReadFunctions rf=new ReadFunctions();
     private int flag=0;
@@ -35,8 +34,8 @@ public class AppAS extends JFrame {
     private Filter first;
     private Filter second;
     private Filter union;
-    private static Map<String,String> TableFiles=new HashMap();
-    private static Map<String,String> TableFolder=new HashMap();
+    private static Map<String,String> TableFiles=new HashMap<>();
+    private static Map<String,String> TableFolder=new HashMap<>();
     public static void main(String[] args)
     {
         /* Set the Nimbus look and feel */
