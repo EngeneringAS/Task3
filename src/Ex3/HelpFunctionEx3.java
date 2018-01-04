@@ -30,6 +30,7 @@ public class HelpFunctionEx3
 {
     //variables
     private final String pathDataBase="database//database.csv";     //path to database
+    private final String pathUNDO="database//UNDO.csv";             //path to database
     private ReadFunctions rf=new ReadFunctions();
     private WriteFunctions wf=new WriteFunctions();
     //this function clears the database

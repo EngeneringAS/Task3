@@ -1091,10 +1091,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="32.33"/>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(new NumberFormatter(number))"/>
-                <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="//create a formatted location text field&#xa;NumberFormat number = new DecimalFormat(&quot;###.########&quot;);"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelY">
               <Properties>
@@ -1109,9 +1105,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="35.33"/>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(new NumberFormatter(number))"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jRadioButtonTime">
               <Properties>
@@ -1136,9 +1129,9 @@
               <Properties>
                 <Property name="columns" type="int" value="8"/>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="#.00000000" subtype="-1" type="0"/>
+                  <Format format="0.00000000" subtype="-1" type="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="0.03"/>
+                <Property name="text" type="java.lang.String" value="0.003"/>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[8, 20]"/>
                 </Property>
