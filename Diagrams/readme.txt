@@ -1,1 +1,1 @@
-In this folder are UML files for assignments
+In this folder are UML files and Use Case diagrams for assignments
